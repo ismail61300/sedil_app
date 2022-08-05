@@ -58,7 +58,8 @@ class _FirstDialogState extends State<FirstDialog> {
 
     audioPlayer.onPlayerCompletion.listen((event) {
       setState(() {
-        context.read<FileController>().writeText();
+        context.read<FileController>().readLort();
+        context.read<FileController>().writeLort();
         position = duration;
       });
     });

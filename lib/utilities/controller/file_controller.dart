@@ -1,15 +1,24 @@
+import 'package:sedil/models/lort.dart';
 import 'package:sedil/utilities/file_manager.dart';
 import 'package:flutter/material.dart';
 
-class FileController extends ChangeNotifier{
-  String _text = "";
-  String get text => _text;
-  readText() async {
-    _text = await FileManager().readTextFile();
+class FileController extends ChangeNotifier {
+  Lort _lort = Lort("0", "0", "0", "Dinlendi");
+
+  Lort get lort => _lort;
+
+  readLort() async {
+    final result = await FileManager().readJsonFile();
+
+    if (result != null) {
+      _lort = Lort.fromJson(result);
+    }
+
     notifyListeners();
   }
-  writeText() async {
-    _text = await FileManager().writeTextFile();
+
+  writeLort() async {
+    _lort = await FileManager().writeJsonFile();
     notifyListeners();
   }
 }

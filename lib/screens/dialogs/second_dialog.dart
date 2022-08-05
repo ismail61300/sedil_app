@@ -1,8 +1,9 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:sedil/screens/dialogs/first_dialog.dart';
 import 'package:sedil/screens/dialogs/third_dialog.dart';
-import 'package:sedil/utilities/file_manager.dart';
+import 'package:sedil/utilities/controller/file_controller.dart';
 import 'package:sedil/widgets/lortappbar.dart';
 import 'package:sedil/screens/listening_screen.dart';
 
@@ -56,8 +57,9 @@ class _SecondDialogState extends State<SecondDialog> {
     });
 
     audioPlayer.onPlayerCompletion.listen((event) {
-      FileManager().writeTextFile();
       setState(() {
+        context.read<FileController>().readLort();
+        context.read<FileController>().writeLort();
         position = duration;
       });
     });

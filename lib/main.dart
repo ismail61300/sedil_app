@@ -3,18 +3,16 @@ import 'package:provider/provider.dart';
 import 'package:sedil/screens/main_screen.dart';
 import 'package:sedil/utilities/controller/file_controller.dart';
 
-
 void main() {
-  runApp(
-    MultiProvider(providers: [ChangeNotifierProvider(create: (_) => FileController())],
-    child: SedilApp()
-    )
-    );
+  runApp(MultiProvider(
+      providers: [ChangeNotifierProvider(create: (_) => FileController())],
+      child: MyApp()));
 }
 
-class SedilApp extends StatelessWidget{
+class SedilApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    context.read<FileController>().readLort();
     return MaterialApp(
       title: "Sedil",
       home: MainScreen(),
@@ -27,7 +25,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    context.read<FileController>().readText();
+    context.read<FileController>().readLort();
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -51,22 +49,21 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
-      ),
+          title: Text(context.select(
+                  (FileController controller) => controller.lort.lrTime) +
+              " Kere " +
+              context.select(
+                  (FileController controller) => controller.lort.lorType))),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              context.select((FileController controller) => controller.text)
-            ),
+            Card(
+                child: TextButton(
+                    onPressed: () => context.read<FileController>().writeLort(),
+                    child: Text("Save to .json"))),
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => context.read<FileController>().writeText(),
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
       ),
     );
   }

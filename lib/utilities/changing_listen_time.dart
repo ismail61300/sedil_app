@@ -1,15 +1,5 @@
-import 'package:flutter/material.dart';
-
-class ChangeLTime extends StatefulWidget {
-  @override
-  State<ChangeLTime> createState() => _ChangeLTimeState();
-}
-
-class _ChangeLTimeState extends State<ChangeLTime> {
-  @override
-  Widget build(BuildContext context) {
-    return Column();
-  }
+class ChangingLoRTime {
+  
 }
 
 /*int lrTime = readLrTime() + 1;

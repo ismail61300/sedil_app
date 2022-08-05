@@ -11,8 +11,10 @@ class _ListenOrReadTimeWidgetState extends State<ListenOrReadTimeWidget> {
   @override
   Widget build(BuildContext context) {
     return Text(
-      context.select((FileController controller) => controller.text) +
-          " Kere Dinlendi",
+      context.select((FileController controller) => controller.lort.lrTime) +
+          " Kere " +
+          context
+              .select((FileController controller) => controller.lort.lorType),
       style: TextStyle(
         fontSize: 20,
         fontWeight: FontWeight.bold,

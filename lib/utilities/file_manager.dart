@@ -1,5 +1,8 @@
+import 'dart:convert';
 import 'dart:io';
 import 'package:path_provider/path_provider.dart';
+import 'package:sedil/models/lort.dart';
+import 'controller/file_controller.dart';
 
 class FileManager {
   static late FileManager instance;
@@ -15,14 +18,14 @@ class FileManager {
     return directory.path;
   }
 
-  Future<File> get _file async {
+  Future<File> get _jsonFile async {
     final path = await _directoryPath;
-    return File("$path/lortime.txt");
+    return File("$path/lortime.json");
   }
 
-  Future<String> readTextFile() async {
+  Future<Map<String, dynamic>?> readJsonFile() async {
     String fileContent = "";
-    File file = await _file;
+    File file = await _jsonFile;
     if (await file.exists()) {
       try {
         fileContent = await file.readAsString();
@@ -30,21 +33,31 @@ class FileManager {
         print(e);
       }
     }
-    return fileContent;
+    return json.decode(fileContent);
   }
 
-  writeTextFile() async {
-    String fileContent = "";
-    File file = await _file;
-    if (await file.exists()) {
-      try {
-        fileContent = await file.readAsString();
-      } catch (e) {
-        print(e);
-      }
+  Future<Lort> writeJsonFile() async {
+    read<FileController>().readLort();
+    int lTime = int.parse(
+        context.select((FileController controller) => controller.lort.lTime));
+    int rTime = int.parse(
+        context.select((FileController controller) => controller.lort.rTime));
+    int lrTime = int.parse(
+        context.select((FileController controller) => controller.lort.lrTime));
+    String lorType = "Dinlendi";
+
+    if (lTime >= 300) {
+      lorType = "Okundu";
+      rTime++;
+      lrTime = rTime;
+    } else {
+      lTime++;
+      lrTime = lTime;
     }
-    String text = (int.parse(fileContent) + 1).toString();
-    await file.writeAsString(text);
-    return text;
+
+    final Lort lort = Lort(lTime.toString(), rTime.toString(), lrTime.toString(), lorType);
+    File file = await _jsonFile;
+    await file.writeAsString(json.encode(lort));
+    return lort;
   }
 }
