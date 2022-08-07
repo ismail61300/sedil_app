@@ -8,11 +8,14 @@ import 'package:sedil/utilities/controller/file_controller.dart';
 import 'package:sedil/widgets/lortappbar.dart';
 
 class FirstDialog extends StatefulWidget {
+  /*const FirstDialog({Key? key, required this.music}) : super(key: key);
+  final String music;*/
   @override
   _FirstDialogState createState() => _FirstDialogState();
 }
 
 class _FirstDialogState extends State<FirstDialog> {
+  /*String get music => music;*/
   String music = "eylesa.mp3";
   String formatTime(Duration duraiton) {
     String twoDigits(int n) => n.toString().padLeft(2, "0");
