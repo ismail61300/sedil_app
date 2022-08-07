@@ -18,7 +18,7 @@ class FileController extends ChangeNotifier {
   }
 
   writeLort() async {
-    _lort = await FileManager().writeJsonFile();
+    _lort = await FileManager().writeJsonFile(readLort());
     notifyListeners();
   }
 }

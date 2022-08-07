@@ -39,8 +39,25 @@ class FileManager {
     return null;
   }
 
-  Future<Lort> writeJsonFile() async {
-    final Lort lort = Lort("0", "0", "0", "Dinlendi");
+  Future<Lort> writeJsonFile(BuildContext context) async {
+    int lTime = int.parse(
+        context.select((FileController controller) => controller.lort.lTime));
+    int rTime = int.parse(
+        context.select((FileController controller) => controller.lort.rTime));
+    int lrTime = int.parse(
+        context.select((FileController controller) => controller.lort.lrTime));
+    String lorType = "Dinlendi";
+
+    if (lTime >= 300) {
+      lorType = "Okundu";
+      rTime++;
+      lrTime = rTime;
+    } else {
+      lTime++;
+      lrTime = lTime;
+    }
+
+    final Lort lort = Lort(lTime.toString(), rTime.toString(), lrTime.toString(), lorType);
     File file = await _jsonFile;
     await file.writeAsString(json.encode(lort));
     return lort;
