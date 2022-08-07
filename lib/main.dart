@@ -6,7 +6,7 @@ import 'package:sedil/utilities/controller/file_controller.dart';
 void main() {
   runApp(MultiProvider(
       providers: [ChangeNotifierProvider(create: (_) => FileController())],
-      child: MyApp()));
+      child: SedilApp()));
 }
 
 class SedilApp extends StatelessWidget {
