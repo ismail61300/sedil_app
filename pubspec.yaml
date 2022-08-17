@@ -36,6 +36,9 @@ dependencies:
   provider: ^6.0.3
   html: ^0.15.0
   intl: ^0.17.0
+  flutter_secure_storage: ^5.1.0
+  share_plus: ^4.0.10+1
+  wakelock: ^0.6.2
 
 dev_dependencies:
   flutter_test:
@@ -54,13 +57,20 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - images/300_kere_dinleme.png
-    - images/300_kere_dinleme_ok.png
-    - images/300_kere_okuma.png
-    - images/300_kere_okuma_ok.png
-    - images/lock_2.png
-    - images/locked_level.png
-    - images/sözlük.png
+    - images/300_kere_dinleme_dark.png
+    - images/300_kere_dinleme_light.png
+    - images/300_kere_dinleme_ok_dark.png
+    - images/300_kere_dinleme_ok_light.png
+    - images/300_kere_okuma_dark.png
+    - images/300_kere_okuma_light.png
+    - images/300_kere_okuma_ok_dark.png
+    - images/300_kere_okuma_ok_light.png
+    - images/lock_2_dark.png
+    - images/lock_2_light.png
+    - images/locked_level_dark.png
+    - images/locked_level_light.png
+    - images/sözlük_dark.png
+    - images/sözlük_light.png
     - images/english_flag.png
     - images/arabic_flag.png
     - contents/dilProjesi.txt

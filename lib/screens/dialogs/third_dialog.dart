@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sedil/utilities/player.dart';
+import 'package:sedil/widgets/player.dart';
 import 'first_dialog.dart';
 import 'second_dialog.dart';
 

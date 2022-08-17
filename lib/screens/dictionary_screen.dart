@@ -1,26 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:sedil/widgets/lortappbar.dart';
 
 class Dictionary extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Sözlük"),
+        iconTheme: IconThemeData(color: Colors.black),
+        backgroundColor: Colors.white,
+        title: Text("Sözlük", style: TextStyle(color: Colors.black)),
       ),
-      body: ListView(
-        children: [
-          Container(
-            margin: EdgeInsets.fromLTRB(15, 15, 15, 15),
-            child: Row(
-              children: [
-                Expanded(
-                  child: Text(
-                    "Google Formu Nasıl Doldurulur?",
-                    style: TextStyle(fontSize: 30, color: Colors.lightBlue),
-                  ),
-                ),
-              ],
-            ),
+      body: CustomScrollView(
+        slivers: <Widget>[
+          LORTAppBar(),
+          SliverList(
+            delegate: SliverChildListDelegate([
+              
+            ]),
           ),
         ],
       ),

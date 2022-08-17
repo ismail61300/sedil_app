@@ -14,24 +14,35 @@ class MainScreen extends StatefulWidget {
 }
 
 class MainScreenState extends State {
+  String dinleme = "images/300_kere_dinleme_light.png";
+  String okuma = "images/300_kere_okuma_light.png";
+  String sozluk = "images/sözlük_light.png";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.white,
         appBar: SedilAppBar(),
         drawer: SedilDrawer(),
         body: CustomScrollView(
           slivers: <Widget>[
             SliverAppBar(
+              backgroundColor: Colors.white,
               automaticallyImplyLeading: false,
               pinned: true,
               expandedHeight: 200.0,
               flexibleSpace: FlexibleSpaceBar(
-                title:
-                    ListenOrReadTimeWidget(),
+                title: ListenOrReadTimeWidget(),
               ),
             ),
             SliverList(
               delegate: SliverChildListDelegate([
+                const Divider(
+                  height: 10,
+                  thickness: 1,
+                  indent: 10,
+                  endIndent: 10,
+                  color: Color(0xff2f2f2f),
+                ),
                 Container(
                   alignment: Alignment.center,
                   child: Row(children: [
@@ -44,13 +55,19 @@ class MainScreenState extends State {
                                 builder: (context) => Listening()));
                       },
                       child: Container(
-                        margin: EdgeInsets.fromLTRB(5, 5, 5, 2.5),
                         child: Image(
-                          image: AssetImage("images/300_kere_dinleme.png"),
+                          image: AssetImage(dinleme),
                         ),
                       ),
                     )),
                   ]),
+                ),
+                const Divider(
+                  height: 10,
+                  thickness: 1,
+                  indent: 10,
+                  endIndent: 10,
+                  color: Color(0xff2f2f2f),
                 ),
                 Container(
                   alignment: Alignment.center,
@@ -62,13 +79,19 @@ class MainScreenState extends State {
                             MaterialPageRoute(builder: (context) => Reading()));
                       },
                       child: Container(
-                        margin: EdgeInsets.fromLTRB(5, 2.5, 5, 2.5),
                         child: Image(
-                          image: AssetImage("images/300_kere_okuma.png"),
+                          image: AssetImage(okuma),
                         ),
                       ),
                     )),
                   ]),
+                ),
+                const Divider(
+                  height: 10,
+                  thickness: 1,
+                  indent: 10,
+                  endIndent: 10,
+                  color: Color(0xff2f2f2f),
                 ),
                 Container(
                   alignment: Alignment.center,
@@ -82,9 +105,8 @@ class MainScreenState extends State {
                                 builder: (context) => Dictionary()));
                       },
                       child: Container(
-                        margin: EdgeInsets.fromLTRB(5, 2.5, 5, 2.5),
                         child: Image(
-                          image: AssetImage("images/sözlük.png"),
+                          image: AssetImage(sozluk),
                         ),
                       ),
                     )),

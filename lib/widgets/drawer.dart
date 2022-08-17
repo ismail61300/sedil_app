@@ -10,18 +10,19 @@ class SedilDrawer extends StatefulWidget {
 }
 
 class _SedilDrawerState extends State<SedilDrawer> {
-  int color = 0xff2196f3;
+  Color black = Colors.black;
+  Color white = Colors.white;
 
   @override
   Widget build(BuildContext context) {
     Widget drawer = Drawer(
-      backgroundColor: Color(0xff2196f3),
+      backgroundColor: white,
       child: Container(
         child: ListView(
           children: [
             Container(
               height: 60,
-              color: Color(0xff2196f3),
+              color: white,
               child: DrawerHeader(
                 child: ListenOrReadTimeWidget(),
               ),
@@ -29,7 +30,7 @@ class _SedilDrawerState extends State<SedilDrawer> {
             Card(
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15.0)),
-              color: Colors.white,
+              color: black,
               child: ListTile(
                 onTap: () {
                   Navigator.push(context,
@@ -37,14 +38,14 @@ class _SedilDrawerState extends State<SedilDrawer> {
                 },
                 title: Text(
                   "Okuma",
-                  style: TextStyle(fontSize: 25, color: Color(color)),
+                  style: TextStyle(fontSize: 25, color: white),
                 ),
               ),
             ),
             Card(
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15.0)),
-              color: Colors.white,
+              color: black,
               child: ListTile(
                 onTap: () {
                   Navigator.push(context,
@@ -52,14 +53,14 @@ class _SedilDrawerState extends State<SedilDrawer> {
                 },
                 title: Text(
                   "Dinleme",
-                  style: TextStyle(fontSize: 25, color: Color(color)),
+                  style: TextStyle(fontSize: 25, color: white),
                 ),
               ),
             ),
             Card(
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15.0)),
-              color: Colors.white,
+              color: black,
               child: ListTile(
                 onTap: () {
                   Navigator.push(context,
@@ -67,7 +68,7 @@ class _SedilDrawerState extends State<SedilDrawer> {
                 },
                 title: Text(
                   "Sözlük",
-                  style: TextStyle(fontSize: 25, color: Color(color)),
+                  style: TextStyle(fontSize: 25, color: white),
                 ),
               ),
             ),
